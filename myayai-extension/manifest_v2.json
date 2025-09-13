@@ -1,0 +1,94 @@
+{
+  "manifest_version": 2,
+  "name": "MyAyAI - AI Prompt Optimizer",
+  "version": "1.0.0",
+  "description": "Optimize your AI prompts across all major AI platforms for better results and productivity.",
+  
+  "permissions": [
+    "storage",
+    "activeTab",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://www.perplexity.ai/*",
+    "https://gemini.google.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://poe.com/*",
+    "https://character.ai/*",
+    "https://*.openai.com/*",
+    "https://*.anthropic.com/*",
+    "https://*.google.com/*",
+    "https://*.microsoft.com/*",
+    "https://*.quora.com/*"
+  ],
+  
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": false
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://gemini.google.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://poe.com/*",
+        "https://character.ai/*"
+      ],
+      "js": [
+        "content/platform-detectors.js",
+        "content/ui-injector.js",
+        "content/content-script.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  
+  "browser_action": {
+    "default_popup": "popup/index.html",
+    "default_title": "MyAyAI - Optimize Your Prompts",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [
+    "ui/*",
+    "styles/*",
+    "assets/*"
+  ],
+  
+  "applications": {
+    "gecko": {
+      "id": "myayai@myayai.com",
+      "strict_min_version": "109.0"
+    }
+  },
+  
+  "author": "MyAyAI Team",
+  "homepage_url": "https://myayai.com",
+  "short_name": "MyAyAI",
+  
+  "content_security_policy": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';",
+  
+  "options_ui": {
+    "page": "popup/options.html",
+    "open_in_tab": false
+  }
+}

@@ -1,0 +1,494 @@
+/* MyAyAI Content Script Styles */
+
+/* Base styles and resets */
+.myayai-btn,
+.myayai-modal,
+.myayai-overlay,
+.myayai-notification {
+    all: initial;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Button Container */
+.myayai-button-container {
+    position: absolute !important;
+    top: -40px !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    gap: 8px !important;
+}
+
+/* Primary Button */
+.myayai-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 8px 12px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+}
+
+.myayai-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2) !important;
+}
+
+.myayai-btn-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3) !important;
+}
+
+.myayai-btn-primary:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 2px rgba(102, 126, 234, 0.3) !important;
+}
+
+.myayai-btn-secondary {
+    background: white !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.myayai-btn-secondary:hover {
+    background: #f9fafb !important;
+    border-color: #9ca3af !important;
+}
+
+.myayai-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Overlay */
+.myayai-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.myayai-overlay-content {
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    overflow: auto !important;
+}
+
+/* Loading Spinner */
+.myayai-loading {
+    text-align: center !important;
+    color: #374151 !important;
+}
+
+.myayai-spinner {
+    width: 40px !important;
+    height: 40px !important;
+    border: 3px solid #e5e7eb !important;
+    border-top: 3px solid #667eea !important;
+    border-radius: 50% !important;
+    animation: myayai-spin 1s linear infinite !important;
+    margin: 0 auto 16px !important;
+}
+
+@keyframes myayai-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.myayai-loading p {
+    margin: 0 !important;
+    font-size: 14px !important;
+    color: #6b7280 !important;
+}
+
+/* Modal */
+.myayai-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    backdrop-filter: blur(4px) !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+.myayai-modal-content {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    max-width: 600px !important;
+    width: 100% !important;
+    max-height: 90vh !important;
+    overflow: hidden !important;
+    animation: myayai-modal-enter 0.3s ease-out !important;
+}
+
+@keyframes myayai-modal-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.myayai-modal-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+}
+
+.myayai-modal-header h3 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+}
+
+.myayai-close-btn {
+    background: none !important;
+    border: none !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    color: #6b7280 !important;
+    padding: 4px !important;
+    border-radius: 4px !important;
+    transition: all 0.2s !important;
+    line-height: 1 !important;
+}
+
+.myayai-close-btn:hover {
+    background: #e5e7eb !important;
+    color: #374151 !important;
+}
+
+.myayai-modal-body {
+    padding: 20px !important;
+    max-height: calc(90vh - 140px) !important;
+    overflow-y: auto !important;
+}
+
+/* Prompt Comparison */
+.myayai-prompt-comparison {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.myayai-prompt-section {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+}
+
+.myayai-prompt-section h4 {
+    margin: 0 0 12px 0 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+}
+
+.myayai-prompt-text {
+    background: white !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #1f2937 !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+}
+
+.myayai-prompt-text.myayai-optimized {
+    border-color: #10b981 !important;
+    background: #ecfdf5 !important;
+}
+
+/* Modal Actions */
+.myayai-modal-actions {
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: flex-end !important;
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #e5e7eb !important;
+}
+
+/* Analysis Results */
+.myayai-analysis-stats {
+    display: flex !important;
+    gap: 24px !important;
+    margin-bottom: 24px !important;
+    justify-content: center !important;
+}
+
+.myayai-stat {
+    text-align: center !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    min-width: 80px !important;
+}
+
+.myayai-stat-value {
+    display: block !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    margin-bottom: 4px !important;
+}
+
+.myayai-stat-label {
+    font-size: 12px !important;
+    color: #6b7280 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.myayai-suggestions h4 {
+    margin: 0 0 12px 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+}
+
+.myayai-suggestions ul {
+    margin: 0 !important;
+    padding: 0 0 0 20px !important;
+    list-style-type: disc !important;
+}
+
+.myayai-suggestions li {
+    margin: 0 0 8px 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: #374151 !important;
+}
+
+/* Notifications */
+.myayai-notification {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    z-index: 999999 !important;
+    font-size: 14px !important;
+    color: #374151 !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s ease !important;
+    max-width: 300px !important;
+    word-break: break-word !important;
+}
+
+.myayai-notification-show {
+    transform: translateX(0) !important;
+}
+
+.myayai-notification-success {
+    border-color: #10b981 !important;
+    background: #ecfdf5 !important;
+    color: #065f46 !important;
+}
+
+.myayai-notification-warning {
+    border-color: #f59e0b !important;
+    background: #fef3c7 !important;
+    color: #92400e !important;
+}
+
+.myayai-notification-error {
+    border-color: #ef4444 !important;
+    background: #fee2e2 !important;
+    color: #991b1b !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .myayai-modal-content {
+        margin: 10px !important;
+        max-height: calc(100vh - 20px) !important;
+    }
+    
+    .myayai-modal-body {
+        max-height: calc(100vh - 140px) !important;
+    }
+    
+    .myayai-prompt-comparison {
+        gap: 16px !important;
+    }
+    
+    .myayai-analysis-stats {
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+    }
+    
+    .myayai-notification {
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+    }
+}
+
+/* Platform-specific adjustments */
+/* OpenAI ChatGPT */
+body[data-platform="openai"] .myayai-button-container {
+    top: -35px !important;
+}
+
+/* Claude */
+body[data-platform="claude"] .myayai-button-container {
+    top: -38px !important;
+}
+
+/* Perplexity */
+body[data-platform="perplexity"] .myayai-button-container {
+    top: -42px !important;
+}
+
+/* Gemini */
+body[data-platform="gemini"] .myayai-button-container {
+    top: -40px !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .myayai-overlay-content,
+    .myayai-modal-content {
+        background: #1f2937 !important;
+        color: #f9fafb !important;
+    }
+    
+    .myayai-modal-header {
+        background: #374151 !important;
+        border-color: #4b5563 !important;
+    }
+    
+    .myayai-modal-header h3 {
+        color: #f9fafb !important;
+    }
+    
+    .myayai-prompt-section {
+        background: #374151 !important;
+        border-color: #4b5563 !important;
+    }
+    
+    .myayai-prompt-text {
+        background: #1f2937 !important;
+        border-color: #4b5563 !important;
+        color: #f9fafb !important;
+    }
+    
+    .myayai-prompt-text.myayai-optimized {
+        border-color: #10b981 !important;
+        background: #064e3b !important;
+    }
+    
+    .myayai-stat {
+        background: #374151 !important;
+        border-color: #4b5563 !important;
+    }
+    
+    .myayai-stat-value {
+        color: #f9fafb !important;
+    }
+    
+    .myayai-notification {
+        background: #374151 !important;
+        border-color: #4b5563 !important;
+        color: #f9fafb !important;
+    }
+}
+
+/* Scrollbar styles */
+.myayai-modal-body::-webkit-scrollbar,
+.myayai-prompt-text::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.myayai-modal-body::-webkit-scrollbar-track,
+.myayai-prompt-text::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 3px !important;
+}
+
+.myayai-modal-body::-webkit-scrollbar-thumb,
+.myayai-prompt-text::-webkit-scrollbar-thumb {
+    background: #c1c1c1 !important;
+    border-radius: 3px !important;
+}
+
+.myayai-modal-body::-webkit-scrollbar-thumb:hover,
+.myayai-prompt-text::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8 !important;
+}
+
+/* Accessibility improvements */
+.myayai-btn:focus,
+.myayai-close-btn:focus {
+    outline: 2px solid #667eea !important;
+    outline-offset: 2px !important;
+}
+
+.myayai-modal:focus-within {
+    outline: none !important;
+}
+
+/* Animation performance */
+.myayai-btn,
+.myayai-modal,
+.myayai-notification {
+    will-change: transform !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .myayai-btn-primary {
+        background: #000 !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .myayai-modal-content {
+        border: 2px solid #000 !important;
+    }
+}

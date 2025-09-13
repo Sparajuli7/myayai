@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAyAI - Prompt Master Dashboard</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- HERO HEADER -->
+        <header class="hero-header">
+            <div class="brand-section">
+                <div class="logo-container">
+                    <div class="logo-icon">🧠</div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">MyAyAI</h1>
+                        <span class="brand-tagline">Prompt Optimizer</span>
+                    </div>
+                </div>
+                <div class="master-toggle-container">
+                    <label class="master-toggle" for="master-toggle">
+                        <input type="checkbox" id="master-toggle" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Active</span>
+                    </label>
+                </div>
+            </div>
+            <div class="level-section">
+                <div class="level-badge">
+                    <span class="level-icon">⭐</span>
+                    <span class="level-text">Prompt Master Level <span id="user-level">5</span></span>
+                    <div class="level-glow"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- TODAY'S IMPACT -->
+        <section class="impact-section">
+            <h2 class="section-title">Today's Impact</h2>
+            <div class="metrics-grid">
+                <div class="metric-card prompts-card">
+                    <div class="metric-icon">⚡</div>
+                    <div class="metric-content">
+                        <div class="metric-value" id="prompts-optimized">0</div>
+                        <div class="metric-label">Prompts Optimized</div>
+                        <div class="metric-change">+<span id="prompts-change">0</span> today</div>
+                    </div>
+                    <div class="metric-sparkle"></div>
+                </div>
+                
+                <div class="metric-card time-card">
+                    <div class="metric-icon">⏰</div>
+                    <div class="metric-content">
+                        <div class="metric-value" id="time-saved">0</div>
+                        <div class="metric-label">Minutes Saved</div>
+                        <div class="metric-change">+<span id="time-change">0</span> today</div>
+                    </div>
+                    <div class="metric-sparkle"></div>
+                </div>
+                
+                <div class="metric-card cost-card">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-content">
+                        <div class="metric-value" id="api-costs">$0</div>
+                        <div class="metric-label">API Costs Avoided</div>
+                        <div class="metric-change">+$<span id="cost-change">0</span> today</div>
+                    </div>
+                    <div class="metric-sparkle"></div>
+                </div>
+                
+                <div class="metric-card quality-card">
+                    <div class="metric-icon">🎯</div>
+                    <div class="metric-content">
+                        <div class="metric-value" id="quality-improvement">0%</div>
+                        <div class="metric-label">Quality Improvement</div>
+                        <div class="metric-change">+<span id="quality-change">0</span>% avg</div>
+                    </div>
+                    <div class="metric-sparkle"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE PREVIEW -->
+        <section class="preview-section">
+            <h2 class="section-title">Live Preview</h2>
+            <div class="preview-container" id="preview-container">
+                <div class="preview-placeholder">
+                    <div class="placeholder-icon">👁️</div>
+                    <p class="placeholder-text">Your next optimization will appear here</p>
+                </div>
+                <div class="preview-content" id="preview-content" style="display: none;">
+                    <div class="preview-tabs">
+                        <button class="preview-tab active" data-tab="before">Before</button>
+                        <button class="preview-tab" data-tab="after">After</button>
+                        <button class="preview-tab" data-tab="diff">Diff</button>
+                    </div>
+                    <div class="preview-body">
+                        <div class="preview-pane active" id="before-pane">
+                            <pre id="original-prompt">Original prompt will appear here...</pre>
+                        </div>
+                        <div class="preview-pane" id="after-pane">
+                            <pre id="optimized-prompt">Optimized prompt will appear here...</pre>
+                        </div>
+                        <div class="preview-pane" id="diff-pane">
+                            <div id="diff-content">Differences will be highlighted here...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MASTERY PROGRESS -->
+        <section class="mastery-section">
+            <h2 class="section-title">Mastery Progress</h2>
+            <div class="progress-container">
+                <div class="xp-bar-container">
+                    <div class="xp-info">
+                        <span class="xp-label">XP</span>
+                        <span class="xp-current" id="current-xp">2,450</span>
+                        <span class="xp-separator">/</span>
+                        <span class="xp-next" id="next-level-xp">3,000</span>
+                    </div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xp-fill"></div>
+                        <div class="xp-glow"></div>
+                    </div>
+                </div>
+                
+                <div class="achievements-grid">
+                    <div class="achievement-item unlocked" title="First Optimization">
+                        <div class="achievement-icon">🎯</div>
+                    </div>
+                    <div class="achievement-item unlocked" title="10 Optimizations">
+                        <div class="achievement-icon">⚡</div>
+                    </div>
+                    <div class="achievement-item unlocked" title="7-Day Streak">
+                        <div class="achievement-icon">🔥</div>
+                    </div>
+                    <div class="achievement-item locked" title="100 Optimizations">
+                        <div class="achievement-icon">🏆</div>
+                    </div>
+                    <div class="achievement-item locked" title="Master Optimizer">
+                        <div class="achievement-icon">👑</div>
+                    </div>
+                </div>
+                
+                <div class="streak-container">
+                    <div class="streak-flame">🔥</div>
+                    <div class="streak-info">
+                        <span class="streak-number" id="streak-count">7</span>
+                        <span class="streak-label">Day Streak</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIFETIME STATS -->
+        <section class="stats-section">
+            <h2 class="section-title">Lifetime Stats</h2>
+            <div class="stats-container">
+                <div class="sparkline-container">
+                    <div class="sparkline-item">
+                        <span class="sparkline-label">Daily Optimizations</span>
+                        <canvas class="sparkline" id="daily-sparkline" width="100" height="30"></canvas>
+                    </div>
+                    <div class="sparkline-item">
+                        <span class="sparkline-label">Quality Trend</span>
+                        <canvas class="sparkline" id="quality-sparkline" width="100" height="30"></canvas>
+                    </div>
+                </div>
+                
+                <div class="platform-distribution">
+                    <h3 class="platform-title">Platform Usage</h3>
+                    <div class="platform-bars">
+                        <div class="platform-bar">
+                            <span class="platform-name">ChatGPT</span>
+                            <div class="platform-progress">
+                                <div class="platform-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="platform-percent">45%</span>
+                        </div>
+                        <div class="platform-bar">
+                            <span class="platform-name">Claude</span>
+                            <div class="platform-progress">
+                                <div class="platform-fill" style="width: 30%"></div>
+                            </div>
+                            <span class="platform-percent">30%</span>
+                        </div>
+                        <div class="platform-bar">
+                            <span class="platform-name">Gemini</span>
+                            <div class="platform-progress">
+                                <div class="platform-fill" style="width: 15%"></div>
+                            </div>
+                            <span class="platform-percent">15%</span>
+                        </div>
+                        <div class="platform-bar">
+                            <span class="platform-name">Others</span>
+                            <div class="platform-progress">
+                                <div class="platform-fill" style="width: 10%"></div>
+                            </div>
+                            <span class="platform-percent">10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="settings-section">
+            <h2 class="section-title">Settings</h2>
+            <div class="settings-container">
+                <div class="settings-group">
+                    <label class="setting-item">
+                        <div class="setting-info">
+                            <span class="setting-name">Theme</span>
+                            <span class="setting-desc">Choose your preferred style</span>
+                        </div>
+                        <select class="setting-select" id="theme-selector">
+                            <option value="auto">Auto</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="midnight">Midnight</option>
+                        </select>
+                    </label>
+                    
+                    <label class="setting-item">
+                        <div class="setting-info">
+                            <span class="setting-name">Sound Effects</span>
+                            <span class="setting-desc">Enable audio feedback</span>
+                        </div>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="sound-effects" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </label>
+                    
+                    <label class="setting-item">
+                        <div class="setting-info">
+                            <span class="setting-name">Animations</span>
+                            <span class="setting-desc">Enable visual effects</span>
+                        </div>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="animations-enabled" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </label>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn secondary" id="export-data">
+                        <span class="btn-icon">📤</span>
+                        Export Data
+                    </button>
+                    <button class="action-btn secondary" id="clear-data">
+                        <span class="btn-icon">🗑️</span>
+                        Clear Data
+                    </button>
+                    <button class="action-btn primary" id="privacy-settings">
+                        <span class="btn-icon">🔒</span>
+                        Privacy Settings
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+    
+    <!-- Particle Effects -->
+    <div id="particle-container"></div>
+    
+    <!-- Achievement Notification -->
+    <div class="achievement-notification" id="achievement-notification">
+        <div class="achievement-icon-large"></div>
+        <div class="achievement-text">
+            <span class="achievement-title"></span>
+            <span class="achievement-description"></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../ui/components.js"></script>
+    <script src="../ui/value-tracker.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
